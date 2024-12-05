@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            border-radius: 20px;
+            width: 15%;
+            height: 100px;
+            margin: 10px 30px;
+        }
+        .login-button {
+            margin-right: 20px;
+            padding: 10px 20px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-button:hover {
+            background-color: #777;
+        }
+        #loginModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        #loginModal.active {
+            display: block;
+        }
+        #modalOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        #modalOverlay.active {
+            display: block;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #555;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #333;
+        }
+        .presentacion {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            margin: 15px 30px;
+        }
+        div {
+            margin: 0 15px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.jpg" class="logo">
+    <h1>Bienvenido a Nuestro Sitio Web</h1>
+    <button class="login-button" onclick="toggleModal()">Login</button>
+</header>
+
+<!-- Modal para Login -->
+<div id="modalOverlay" onclick="toggleModal()"></div>
+<div id="loginModal">
+    <form action="login.php" method="POST">
+        <h2>Iniciar Sesión</h2>
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <button type="submit">Entrar</button>
+        <button type="button" onclick="toggleModal()">Cancelar</button>
+    </form>
+</div>
+
+<nav>
+    <a href="ventas.html">Ventas (Productos)</a>
+    <a href="facturacion.html">Facturación</a>
+    <a href="faq.html">Preguntas Frecuentes</a>
+    <a href="listado_productos.php">Edición de Productos</a>
+</nav>
+
+<section class="presentacion">
+    <div>
+        <img src="imagen1.jpg" alt="Imagen de presentación">
+    </div>
+    <div>
+        <h2>Bienvenido a Nuestra Plataforma</h2>
+        <p>En nuestra empresa, nos dedicamos a ofrecer productos de calidad, un servicio de facturación eficiente y respuestas claras a tus preguntas más frecuentes. Explora nuestras diferentes áreas y descubre cómo podemos ayudarte a cumplir con tus necesidades. Contamos con un equipo de profesionales que se esfuerzan por brindarte la mejor experiencia posible.</p>
+        <p>Accede a nuestra sección de Ventas para ver los productos que ofrecemos, visita Facturación para gestionar tus recibos y pagos, o dirígete a Preguntas Frecuentes si necesitas más información sobre nuestros servicios.</p>
+        <p>Estamos comprometidos con la transparencia, la calidad y la satisfacción de nuestros clientes. ¡Gracias por visitarnos!</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Mi Empresa. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    function toggleModal() {
+        const modal = document.getElementById('loginModal');
+        const overlay = document.getElementById('modalOverlay');
+        modal.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
