@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas (Productos)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        nav {
+            text-align: center;
+            margin: 20px;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+        }
+        section {
+            padding: 20px;
+        }
+
+        #productos {
+            background-color: #ffffff; /* Color de fondo blanco */
+            padding: 20px; /* Espaciado interno */
+            width: 100%; /* Ancho máximo */
+            margin: 20px auto; /* Centrar en la página */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        }
+
+        #productos h2 {
+            font-size: 28px; /* Tamaño del título */
+            color: #333; /* Color del texto */
+            margin-bottom: 20px; /* Espaciado inferior */
+            text-align: center; /* Centrar el título */
+        }
+
+        .producto {
+            border: 1px solid #ddd; /* Borde sutil */
+            border-radius: 8px; /* Bordes redondeados */
+            padding: 15px; /* Espaciado interno */
+            margin: 15px; /* Margen entre productos */
+            text-align: center; /* Centrar el contenido */
+            transition: box-shadow 0.3s; /* Transición para el efecto de sombra */
+        }
+
+        .producto:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+        }
+
+        .producto img {
+            max-width: 300px; /* Ajustar imagen al contenedor */
+            height: auto; /* Mantener proporciones */
+            border-radius: 4px; /* Bordes redondeados para la imagen */
+        }
+
+        .producto h3 {
+            font-size: 20px; /* Tamaño del nombre del producto */
+            color: #333; /* Color del texto */
+            margin: 10px 0; /* Espaciado vertical */
+        }
+
+        .producto p {
+            font-size: 16px; /* Tamaño de la descripción */
+            color: #666; /* Color del texto */
+            margin: 10px 0; /* Espaciado vertical */
+        }
+
+        .precio {
+            font-size: 18px; /* Tamaño del precio */
+            color: #007bff; /* Color del precio */
+            font-weight: bold; /* Negrita para el precio */
+            margin: 10px 0; /* Espaciado vertical */
+        }
+
+        .btn-agregar {
+            background-color: #28a745; /* Color de fondo del botón */
+            color: #ffffff; /* Color del texto del botón */
+            border: none; /* Sin borde */
+            padding: 10px 15px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer; /* Cambia el cursor al pasar el ratón */
+            transition: background-color 0.3s; /* Transición para el color de fondo */
+        }
+
+        .btn-agregar:hover {
+            background-color: #218838; /* Color más oscuro al pasar el ratón */
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Ventas (Productos)</h1>
+</header>
+
+<nav>
+    <a href="index.html">Inicio</a>
+</nav>
+
+<section>
+    <h2>Productos Disponibles</h2>
+    <p>Aquí encontrarás información sobre nuestros productos.</p>
+</section>
+
+<section id="productos">
+    <h2>Nuestros Productos</h2>
+    <div class="producto">
+        <img src="producto1.jpg" alt="Producto 1" class="ima_prod">
+        <h3>Producto 1</h3>
+        <p>Descripción breve del Producto 1. Este producto es ideal para...</p>
+        <span class="precio">$19.99</span>
+        <button class="btn-agregar">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+        <img src="producto2.jpg" alt="Producto 2" class="ima_prod">
+        <h3>Producto 2</h3>
+        <p>Descripción breve del Producto 2. Este producto es perfecto para...</p>
+        <span class="precio">$29.99</span>
+        <button class="btn-agregar">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+        <img src="producto3.jpg" alt="Producto 3" class="ima_prod">
+        <h3>Producto 3</h3>
+        <p>Descripción breve del Producto 3. Este producto te ayudará a...</p>
+        <span class="precio">$39.99</span>
+        <button class="btn-agregar">Agregar al carrito</button>
+    </div>
+</section>
+
+
+<footer>
+    <p>&copy; 2024 Mi Empresa. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
