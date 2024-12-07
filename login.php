@@ -2,44 +2,49 @@
 session_start();
 
 // Configuración de la conexión a la base de datos
-$servername = "localhost"; // Cambia si usas otro servidor
-$username = "root";        // Usuario de la base de datos
-$password = "";            // Contraseña del usuario
-$dbname = "tiendita";      // Nombre de tu base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "tiendita";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Verificar si se envió el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener datos del formulario
-    $user = $conn->real_escape_string($_POST['username']);
-    $pass = $_POST['password'];
+    if (isset($_POST['login'])) {
+        // Proceso de login
+        $user = $conn->real_escape_string($_POST['username']);
+        $pass = $_POST['password'];
+        $sql = "SELECT * FROM users WHERE username = '$user'";
+        $result = $conn->query($sql);
 
-    // Consultar base de datos
-    $sql = "SELECT * FROM users WHERE username = '$user'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        
-        // Verificar contraseña
-        if (password_verify($pass, $row['password'])) {
-            // Guardar usuario en la sesión
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['role'] = $row['role']; // Si tienes roles de usuario
-            header("Location: index.php");    // Redirigir al inicio
-            exit();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            if (password_verify($pass, $row['password'])) {
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['role'] = $row['role'];
+                header("Location: index.php");
+                exit();
+            } else {
+                echo "<p>Contraseña incorrecta.</p>";
+            }
         } else {
-            echo "<p>Contraseña incorrecta.</p>";
+            echo "<p>Usuario no encontrado.</p>";
         }
-    } else {
-        echo "<p>Usuario no encontrado.</p>";
+    } elseif (isset($_POST['register'])) {
+        // Proceso de registro
+        $user = $conn->real_escape_string($_POST['username']);
+        $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $role = "user"; // Rol por defecto para usuarios registrados
+
+        $sql = "INSERT INTO users (username, password, role) VALUES ('$user', '$pass', '$role')";
+        if ($conn->query($sql) === TRUE) {
+            echo "<p>Registro exitoso. Ahora puedes iniciar sesión.</p>";
+        } else {
+            echo "<p>Error al registrar usuario: " . $conn->error . "</p>";
+        }
     }
 }
 $conn->close();
