@@ -104,32 +104,24 @@
 <body>
 
 <header>
-    <img src="logo.jpg" class="logo">
+  <img src="logo.jpg" class="logo">
     <h1>Bienvenido a Nuestro Sitio Web</h1>
-    <button class="login-button" onclick="toggleModal()">Login</button>
+    <div style="position: absolute; right: 10px; top: 10px;">
+        <?php if (!isset($_SESSION['username'])): ?>
+            <a href="login.php">Login</a> | <a href="register.php">Registrarse</a>
+        <?php else: ?>
+            <p>Hola, <?php echo $_SESSION['username']; ?> | <a href="logout.php">Cerrar sesión</a></p>
+        <?php endif; ?>
+    </div>
 </header>
-
-<!-- Modal para Login -->
-<div id="modalOverlay" onclick="toggleModal()"></div>
-<div id="loginModal">
-    <form action="login.php" method="POST">
-        <h2>Iniciar Sesión</h2>
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username" required>
-        <br><br>
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <button type="submit">Entrar</button>
-        <button type="button" onclick="toggleModal()">Cancelar</button>
-    </form>
-</div>
 
 <nav>
     <a href="ventas.html">Ventas (Productos)</a>
     <a href="facturacion.html">Facturación</a>
     <a href="faq.html">Preguntas Frecuentes</a>
-    <a href="listado_productos.php">Edición de Productos</a>
+    <?php if ($role === 'admin'): ?>
+        <a href="listado_productos.php">Edición de Productos</a>
+    <?php endif; ?>
 </nav>
 
 <section class="presentacion">
