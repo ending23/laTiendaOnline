@@ -32,17 +32,18 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
             height: 100px;
             margin: 10px 30px;
         }
-        .login-button {
-            margin-right: 20px;
-            padding: 10px 20px;
-            background-color: #555;
+        .header-buttons a {
+            padding: 10px 15px;
+            background-color: #007BFF;
             color: white;
-            border: none;
             border-radius: 5px;
-            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
         }
-        .login-button:hover {
-            background-color: #777;
+        .header-buttons a:hover {
+            background-color: #0056b3;
         }
         #loginModal {
             display: none;
@@ -82,9 +83,12 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
+            border-radius: 5px;
+            margin: 5px;
+            transition: background-color 0.3s ease;
         }
         nav a:hover {
-            background-color: #333;
+            background-color: #007BFF;
         }
         .presentacion {
             display: flex;
@@ -109,13 +113,14 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 <body>
 
 <header>
-  <img src="logo.jpg" class="logo">
+    <img src="logo.jpg" class="logo">
     <h1>Bienvenido a Nuestro Sitio Web</h1>
-    <div style="position: absolute; right: 10px; top: 10px;">
+    <div class="header-buttons" style="position: absolute; right: 10px; top: 10px;">
         <?php if (!isset($_SESSION['username'])): ?>
-            <a href="login.php">Login</a> | <a href="register.php">Registrarse</a>
+            <a href="login.php">Login</a>
+            <a href="register.php">Registrarse</a>
         <?php else: ?>
-            <p>Hola, <?php echo $_SESSION['username']; ?> | <a href="logout.php">Cerrar sesión</a></p>
+            <p>Hola, <?php echo $_SESSION['username']; ?> | <a href="logout.php" class="logout-link">Cerrar sesión</a></p>
         <?php endif; ?>
     </div>
 </header>
@@ -156,3 +161,4 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 
 </body>
 </html>
+
